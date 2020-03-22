@@ -4,6 +4,15 @@ var optionValueButton = {
     onOff:   ['on']
 }
 
+function createPanel () {
+  var panelContainer = document.querySelector('.panel');
+  var panel = document.createElement('input');
+  panel.setAttribute('id', 'panelLabel');
+
+  panelContainer.appendChild(panel);
+}
+createPanel();
+
 /**
  * 
  * @param {Object[]} arrayValue
@@ -15,6 +24,11 @@ function createButton (arrayValue) {
     elementButton.setAttribute('id', 'button' + arrayValue[i]);
     elementButton.setAttribute('class', 'button');
     elementButton.innerText = arrayValue[i];
+
+    elementButton.addEventListener('click', function(){
+      var panel = document.querySelector('#panelLabel');
+      panel.value += arrayValue[i];
+    })
 
     var keyboard = document.querySelector('.keyboard');
     keyboard.appendChild(elementButton);
