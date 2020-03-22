@@ -1,7 +1,7 @@
 var optionValueButton = {
     numbers: ['1','2','3','4','5','6','7','8','9','0'],
     signals: ['+','-','*','/','='],
-    onOff:   ['onOff']
+    onOff:   ['on']
 }
 
 /**
@@ -13,10 +13,11 @@ function createButton (arrayValue) {
 
     var elementButton = document.createElement('button');
     elementButton.setAttribute('id', 'button' + arrayValue[i]);
+    elementButton.setAttribute('class', 'button');
     elementButton.innerText = arrayValue[i];
 
-    var container = document.getElementById('container');
-    container.appendChild(elementButton);
+    var keyboard = document.querySelector('.keyboard');
+    keyboard.appendChild(elementButton);
   }
 }
 

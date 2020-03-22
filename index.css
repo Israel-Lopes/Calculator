@@ -1,0 +1,16 @@
+
+.keyboard {
+    width: 120px;
+    right: 100px;
+}
+.button {
+    width: 30px;
+    right: 60px;
+}
+.panel {
+    width: 100px;
+}
+.calculator {
+    width: 120px;
+    border: 1px solid black;
+}
