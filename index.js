@@ -1,9 +1,12 @@
 var optionValueButton = {
     numbers: ['1','2','3','4','5','6','7','8','9','0'],
-    signals: ['+','-','*','/','='],
+    signals: ['+','-','*','/','rst'],
     onOff:   ['on']
 }
 
+/**
+ * Create panel calculator
+ */
 function createPanel () {
   var panelContainer = document.querySelector('.panel');
   var panel = document.createElement('input');
@@ -25,9 +28,11 @@ function createButton (arrayValue) {
     elementButton.setAttribute('class', 'button');
     elementButton.innerText = arrayValue[i];
 
-    elementButton.addEventListener('click', function(){
+    elementButton.addEventListener('click', function() {
       var panel = document.querySelector('#panelLabel');
-      panel.value += arrayValue[i];
+      if (arrayValue[i] !== 'on' && arrayValue[i] !== 'rst') {
+        panel.value += arrayValue[i];
+      }
     })
 
     var keyboard = document.querySelector('.keyboard');
@@ -56,3 +61,14 @@ for (var prop in optionValueButton) {
     }
   }
 }
+
+var panel = document.querySelector('#panelLabel');
+var powerOff = document.querySelector('#buttonon');
+powerOff.addEventListener('click', function() {
+  panel.value = '';
+})
+
+var result = document.querySelector('#buttonrst');
+result.addEventListener('click', function() {
+  panel.value = eval(panel.value);
+})
